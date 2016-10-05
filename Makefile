@@ -2,14 +2,14 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: clmmPlot.Rout 
+target pngtarget pdftarget vtarget acrtarget: clmmModel.Rout 
 
 ##################################################################
 
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
+Sources = Makefile .gitignore README.md stuff.mk LICENSE.md journal.md
 include stuff.mk
 # include $(ms)/perl.def
 
@@ -23,7 +23,7 @@ ltc.Rout: $(Drop)/DHS_couples/dc.RData ltc.R
 
 diffModel.Rout: ltc.Rout diffModel.R
 
-clmModel.Rout: ltc.Rout clmModel.R
+clmmModel.Rout: ltc.Rout clmmModel.R
 
 clmmPlot.Rout: ordfuns.Rout plotFuns.Rout clmModel.Rout clmmPlot.R
 	$(run-R)

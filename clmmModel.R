@@ -11,7 +11,7 @@ modAns <- model.frame(
 
 mod <- clmm(
 	HIVstatus ~
-		ns(ageDiff, 4)  + ns(current.age.f, 4)
+		ns(ageDiff, 3)  + ns(current.age.f, 3)
 		+ yearsActive
 		+ (1 | Country.code.and.phase)
 		+ (1 | Country.code.and.phase:Cluster.number)
@@ -19,3 +19,5 @@ mod <- clmm(
 )
 
 print(summary(mod))
+
+drop1(mod, test="Chisq")

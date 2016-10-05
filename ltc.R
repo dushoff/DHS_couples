@@ -15,6 +15,9 @@ Answers <- (Answers.couple
 		, HIVstatus = as.factor(grepl("positive", HIV.result.w))
 		, Cluster.number = as.factor(Cluster.number)
 	)
+	%>% filter(
+		ageDiff>-3 & ageDiff<11
+	)
 	%>% select(HIVstatus
 		, ageDiff
 		, current.age.f, yearsActive
