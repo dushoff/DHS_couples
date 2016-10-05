@@ -1,4 +1,4 @@
-Disclosure: Preliminary analysis based on an old data set looks fairly good. We are abandoning it before getting very detailed. Code and results table will be saved before moving on.
+Disclosure: Preliminary analysis based on an old data set looked fairly good. We are abandoning it before getting very detailed, because we didn't want to cheat, um, much. Code and results table will be saved before moving on.
 
 * v0.1 Preliminary analysis scripts
 * v0.2 results added https://github.com/dushoff/DHS_couples/releases/tag/v0.2
