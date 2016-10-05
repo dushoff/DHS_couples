@@ -1,0 +1,61 @@
+> 
+> # Generated using wrapR file clmmModel.wrapR.r
+> source('clmmModel.R', echo=TRUE)
+
+> library(ordinal)
+
+> library(splines)
+
+> modAns <- model.frame(HIVstatus ~ ageDiff + current.age.f + 
++     yearsActive + Country.code.and.phase + Cluster.number, data = Answers)
+
+> mod <- clmm(HIVstatus ~ ns(ageDiff, 3) + ns(current.age.f, 
++     3) + yearsActive + (1 | Country.code.and.phase) + (1 | Country.code.and.phase:Clus .... [TRUNCATED] 
+
+> print(summary(mod))
+Cumulative Link Mixed Model fitted with the Laplace approximation
+
+formula: HIVstatus ~ ns(ageDiff, 3) + ns(current.age.f, 3) + yearsActive +  
+    (1 | Country.code.and.phase) + (1 | Country.code.and.phase:Cluster.number)
+data:    modAns
+
+ link  threshold nobs logLik   AIC     niter     max.grad cond.H 
+ logit flexible  6369 -1841.37 3702.74 568(3247) 2.13e-03 3.9e+04
+
+Random effects:
+ Groups                                Name        Variance Std.Dev.
+ Country.code.and.phase:Cluster.number (Intercept) 0.1417   0.3764  
+ Country.code.and.phase                (Intercept) 1.4022   1.1841  
+Number of groups:  Country.code.and.phase:Cluster.number 2997,  Country.code.and.phase 11 
+
+Coefficients:
+                      Estimate Std. Error z value Pr(>|z|)   
+ns(ageDiff, 3)1       -0.02407    0.19868  -0.121   0.9036   
+ns(ageDiff, 3)2        0.27316    0.59431   0.460   0.6458   
+ns(ageDiff, 3)3        0.47755    0.17237   2.771   0.0056 **
+ns(current.age.f, 3)1  0.73954    0.34967   2.115   0.0344 * 
+ns(current.age.f, 3)2  2.33960    1.00216   2.335   0.0196 * 
+ns(current.age.f, 3)3 -0.29155    0.54912  -0.531   0.5955   
+yearsActive            0.02205    0.01743   1.265   0.2057   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Threshold coefficients:
+           Estimate Std. Error z value
+FALSE|TRUE   4.3988     0.6117    7.19
+
+> drop1(mod, test = "Chisq")
+Single term deletions
+
+Model:
+HIVstatus ~ ns(ageDiff, 3) + ns(current.age.f, 3) + yearsActive + 
+    (1 | Country.code.and.phase) + (1 | Country.code.and.phase:Cluster.number)
+                     Df    AIC     LRT  Pr(>Chi)    
+<none>                  3702.7                      
+ns(ageDiff, 3)        3 3705.8  9.0363   0.02881 *  
+ns(current.age.f, 3)  3 3723.6 26.8983 6.184e-06 ***
+yearsActive           1 3702.4  1.6174   0.20346    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> # Wrapped output file clmmModel.wrapR.rout
+> 
